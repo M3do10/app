@@ -1,0 +1,26 @@
+name: crash_guard
+description: Accelerometer-based impact detection with GPS location capture.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  sensors_plus: ^6.1.1
+  geolocator: ^13.0.2
+  permission_handler: ^11.3.1
+  intl: ^0.19.0
+  uuid: ^4.5.1
+  provider: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
