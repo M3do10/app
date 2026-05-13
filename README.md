@@ -1,5 +1,3 @@
-# accedent_detect_app
-
 A new Flutter project.
 
 ## Getting Started
