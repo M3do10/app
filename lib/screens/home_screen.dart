@@ -35,13 +35,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        actions: [
-          // IconButton(
-          //   tooltip: "Adjust detection",
-          //   onPressed: () => _openSettings(context),
-          //   icon: const Icon(Icons.tune_rounded),
-          // ),
-        ],
       ),
       body: Consumer<CrashMonitor>(
         builder: (context, m, _) {
@@ -145,7 +138,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             Text(
-                              "No events yet. Enable monitoring before you drive.",
+                              "No events yet.",
                               textAlign: TextAlign.center,
                               style: t.textTheme.bodyLarge?.copyWith(
                                 color: t.colorScheme.onSurfaceVariant,
@@ -165,99 +158,6 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
-  // void _openSettings(BuildContext context) {
-  //   final m = context.read<CrashMonitor>();
-  //   showModalBottomSheet<void>(
-  //     context: context,
-  //     isScrollControlled: true,
-  //     showDragHandle: true,
-  //     builder: (ctx) {
-  //       return Padding(
-  //         padding: EdgeInsets.only(
-  //           left: 24,
-  //           right: 24,
-  //           bottom: MediaQuery.paddingOf(ctx).bottom + 24,
-  //           top: 8,
-  //         ),
-  //         child: StatefulBuilder(
-  //           builder: (context, setLocal) {
-  //             return Column(
-  //               mainAxisSize: MainAxisSize.min,
-  //               crossAxisAlignment: CrossAxisAlignment.start,
-  //               children: [
-  //                 Text(
-  //                   "Detection settings",
-  //                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-  //                         fontWeight: FontWeight.w700,
-  //                       ),
-  //                 ),
-  //                 const SizedBox(height: 8),
-  //                 Text(
-  //                   "Acceleration uses linear acceleration without gravity (m/s²). Gyroscope uses rotation rate magnitude (rad/s). Higher values reduce false alarms.",
-  //                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-  //                         color: Theme.of(context).colorScheme.onSurfaceVariant,
-  //                       ),
-  //                 ),
-  //                 const SizedBox(height: 20),
-  //                 Text(
-  //                   "Impact threshold: ${m.thresholdMps2.toStringAsFixed(1)} m/s²",
-  //                 ),
-  //                 Slider(
-  //                   value: m.thresholdMps2,
-  //                   min: 12,
-  //                   max: 45,
-  //                   divisions: 33,
-  //                   label: "${m.thresholdMps2.toStringAsFixed(1)} m/s²",
-  //                   onChanged: (v) {
-  //                     m.thresholdMps2 = v;
-  //                     setLocal(() {});
-  //                   },
-  //                 ),
-  //                 const SizedBox(height: 12),
-  //                 Text(
-  //                   "Rotation threshold: ${m.gyroThresholdRadS.toStringAsFixed(1)} rad/s",
-  //                 ),
-  //                 Slider(
-  //                   value: m.gyroThresholdRadS,
-  //                   min: 4,
-  //                   max: 25,
-  //                   divisions: 21,
-  //                   label: "${m.gyroThresholdRadS.toStringAsFixed(1)} rad/s",
-  //                   onChanged: (v) {
-  //                     m.gyroThresholdRadS = v;
-  //                     setLocal(() {});
-  //                   },
-  //                 ),
-  //                 const SizedBox(height: 8),
-  //                 Text("Cooldown: ${m.cooldownSeconds} s"),
-  //                 Slider(
-  //                   value: m.cooldownSeconds.toDouble(),
-  //                   min: 30,
-  //                   max: 300,
-  //                   divisions: 27,
-  //                   label: "${m.cooldownSeconds} s",
-  //                   onChanged: (v) {
-  //                     m.cooldownSeconds = v.round();
-  //                     setLocal(() {});
-  //                   },
-  //                 ),
-  //                 const SizedBox(height: 12),
-  //                 SizedBox(
-  //                   width: double.infinity,
-  //                   child: FilledButton(
-  //                     onPressed: () => Navigator.pop(ctx),
-  //                     child: const Text("Done"),
-  //                   ),
-  //                 ),
-  //               ],
-  //             );
-  //           },
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
 }
 
 class _MonitoringCard extends StatelessWidget {
@@ -369,7 +269,7 @@ class _LiveSignalCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Live acceleration",
+                  "Acceleration",
                   style: t.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -411,7 +311,7 @@ class _LiveSignalCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Live rotation (gyro)",
+                  "Rotation (gyroscope)",
                   style: t.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),

@@ -1,11 +1,9 @@
 import "dart:async";
 import "dart:math";
-
 import "package:flutter/foundation.dart";
 import "package:flutter/services.dart";
 import "package:sensors_plus/sensors_plus.dart";
 import "package:uuid/uuid.dart";
-
 import "../models/crash_event.dart";
 import "location_service.dart";
 
@@ -91,7 +89,7 @@ class CrashMonitor extends ChangeNotifier {
     final locOk = await LocationService.ensureLocationReady();
     if (!locOk) {
       _statusNote =
-          "Allow location access so GPS coordinates can be saved with each event.";
+          "Allow location access";
     } else {
       _statusNote = null;
     }
@@ -111,14 +109,14 @@ class CrashMonitor extends ChangeNotifier {
     });
     await _accelSub?.cancel();
     await _gyroSub?.cancel();
-    _accelSub = userAccelerometerEvents.listen(_onAccel, onError: (_) {
-      _statusNote = "Accelerometer stream interrupted.";
-      notifyListeners();
-    });
-    _gyroSub = gyroscopeEvents.listen(_onGyro, onError: (_) {
-      _statusNote = "Gyroscope stream interrupted.";
-      notifyListeners();
-    });
+    // _accelSub = userAccelerometerEvents.listen(_onAccel, onError: (_) {
+    //   _statusNote = "Accelerometer not worked";
+    //   notifyListeners();
+    // });
+    // _gyroSub = gyroscopeEvents.listen(_onGyro, onError: (_) {
+    //   _statusNote = "Gyroscope not worked";
+    //   notifyListeners();
+    // });
     notifyListeners();
     return true;
   }
@@ -207,7 +205,7 @@ class CrashMonitor extends ChangeNotifier {
         notifyListeners();
       });
 
-      await HapticFeedback.heavyImpact();
+      // await HapticFeedback.heavyImpact();
 
       final id = _uuid.v4();
       final ev = CrashEvent(
